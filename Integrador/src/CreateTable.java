@@ -28,14 +28,39 @@ public class CreateTable {
 		try {
 			Connection con = DriverManager.getConnection(uri);
 			createTables(con);
-			addData(con);
+			addCustomerData(con);
+			addProductData(con);
+			addBillData(con);
+			addBillProductData(con);
 			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	private static void addData(Connection con) throws SQLException {
+	private static void addProductData(Connection con) throws SQLException {
+		String insert = "INSERT INTO producto (id_producto, nombre, valor) VALUES(?,?,?)";
+		PreparedStatement ps = con.prepareStatement(insert);
+		CSVParser parser;
+		try {
+			parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader("src/productos.csv"));
+			for (CSVRecord row : parser) {
+				ps.setInt(1, Integer.parseInt(row.get("idProducto")));
+				ps.setString(2, row.get("nombre"));
+				ps.setFloat(3, Float.parseFloat(row.get("valor")));
+				ps.executeUpdate();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		ps.close();
+		con.commit();
+	}
+	
+	private static void addCustomerData(Connection con) throws SQLException {
 		String insert = "INSERT INTO cliente (id_cliente, nombre, email) VALUES(?,?,?)";
 		PreparedStatement ps = con.prepareStatement(insert);
 		CSVParser parser;
@@ -45,6 +70,48 @@ public class CreateTable {
 				ps.setInt(1, Integer.parseInt(row.get("idCliente")));
 				ps.setString(2, row.get("nombre"));
 				ps.setString(3, row.get("email"));
+				ps.executeUpdate();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		ps.close();
+		con.commit();
+	}
+	
+	private static void addBillData(Connection con) throws SQLException {
+		String insert = "INSERT INTO factura (id_factura, id_cliente) VALUES(?,?)";
+		PreparedStatement ps = con.prepareStatement(insert);
+		CSVParser parser;
+		try {
+			parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader("src/facturas.csv"));
+			for (CSVRecord row : parser) {
+				ps.setInt(1, Integer.parseInt(row.get("idFactura")));
+				ps.setInt(2, Integer.parseInt(row.get("idCliente")));
+				ps.executeUpdate();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		ps.close();
+		con.commit();
+	}
+	private static void addBillProductData(Connection con) throws SQLException {
+		String insert = "INSERT INTO factura_producto (cantidad, id_producto, id_factura) VALUES(?,?,?)";
+		PreparedStatement ps = con.prepareStatement(insert);
+		CSVParser parser;
+		try {
+			parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader("src/facturas-productos.csv"));
+			for (CSVRecord row : parser) {
+				ps.setInt(1, Integer.parseInt(row.get("cantidad")));
+				ps.setInt(2, Integer.parseInt(row.get("idProducto")));
+				ps.setInt(3, Integer.parseInt(row.get("idFactura")));
 				ps.executeUpdate();
 			}
 		} catch (FileNotFoundException e) {
@@ -67,15 +134,14 @@ public class CreateTable {
 		con.prepareStatement(table).execute();
 		con.commit();
 		table = "CREATE TABLE producto(id_producto int NOT NULL," + " nombre varchar(45) NOT NULL,"
-				+ " valor int NOT NULL," + " PRIMARY KEY(id_producto))";
+				+ " valor double NOT NULL," + " PRIMARY KEY(id_producto))";
 		con.prepareStatement(table).execute();
 		con.commit();
 		table = "CREATE TABLE factura_producto(cantidad int NOT NULL," + " id_producto int NOT NULL,"
-				+ " id_factura int NOT NULL," + " valor int NOT NULL,"
+				+ " id_factura int NOT NULL,"
 				+ " FOREIGN KEY(id_producto) REFERENCES producto(id_producto),"
 				+ " FOREIGN KEY(id_factura) REFERENCES factura(id_factura))";
 		con.prepareStatement(table).execute();
 		con.commit();
 	}
-
 }

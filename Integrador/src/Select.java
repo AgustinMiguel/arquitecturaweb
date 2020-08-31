@@ -21,13 +21,25 @@ public class Select {
 		try {
 			Connection con = DriverManager.getConnection(uri);
 			String select = "SELECT * FROM cliente";
-			PreparedStatement ps = con.prepareStatement(select);
-			ResultSet rs = ps.executeQuery();
-			while(rs.next()) {
-				System.out.println(rs.getInt(1) +", "+rs.getString(2)+", "+rs.getString(3));
+			PreparedStatement ps;
+			ResultSet rs;
+			select = "SELECT fp.id_producto,p.nombre, sum(fp.cantidad * p.valor) AS recaudacion FROM factura_producto fp JOIN producto p ON (fp.id_producto = p.id_producto) GROUP BY fp.id_producto, p.nombre ORDER BY recaudacion DESC FETCH FIRST 1 ROWS ONLY";
+			ps = con.prepareStatement(select);
+			rs = ps.executeQuery();
+			System.out.println("-----------------PRODUCTO MAS RECAUDADOR----------------");
+			while (rs.next()) {
+				System.out.println(rs.getInt(1) + ", " + rs.getString(2) + ", " + rs.getInt(3));
+			}
+			select = "SELECT c.id_cliente, c.nombre, sum(fp.cantidad * p.valor) AS recaudacion FROM factura_producto fp JOIN producto p ON (fp.id_producto = p.id_producto) JOIN factura f ON (fp.id_factura = f.id_factura) "
+					+ "JOIN cliente c ON (f.id_cliente = c.id_cliente) GROUP BY c.id_cliente, c.nombre ORDER BY recaudacion DESC";
+			ps = con.prepareStatement(select);
+			rs = ps.executeQuery();
+			System.out.println("-----------------LISTA DE FACTURACION POR CLIENTE----------------");
+			while (rs.next()) {
+				System.out.println(rs.getInt(1) + ", " + rs.getString(2) + ", " + rs.getInt(3));
 			}
 			con.close();
-		} catch (SQLException e) {
+		} catch (SQLException e) {	
 			e.printStackTrace();
 		}
 	}

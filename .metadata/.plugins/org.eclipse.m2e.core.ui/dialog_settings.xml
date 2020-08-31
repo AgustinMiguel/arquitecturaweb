@@ -2,12 +2,14 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="Integrador"/>
 			<item value="JDBDocker"/>
 			<item value="JDBCbasic"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="Integrador"/>
 			<item value="JDBDocker"/>
 			<item value="JDBCbasic"/>
 		</list>
