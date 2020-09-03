@@ -50,6 +50,10 @@ public class DAOFactory {
 	protected void getBestProduct(String uri) {
 		products.getBestProduct(uri, DRIVER);
 	}
+	
+	protected void getBestCustomers(String uri) {
+		customers.getBestCustomers(uri, DRIVER);
+	}
 
 	private void createTables(Connection con) throws SQLException {
 		String table = "CREATE TABLE  cliente(" + "id_cliente INT," + "nombre VARCHAR(500)," + "email VARCHAR(150),"
