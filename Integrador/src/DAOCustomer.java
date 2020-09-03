@@ -53,7 +53,7 @@ public class DAOCustomer {
 			String select = "SELECT * FROM cliente";
 			PreparedStatement ps;
 			ResultSet rs;
-			select = "SELECT c.id_cliente, c.nombre, sum(fp.cantidad * p.valor) AS recaudacion FROM factura_producto fp JOIN producto p ON (fp.id_producto = p.id_producto) JOIN factura f ON (fp.id_factura = f.id_factura) "
+			select = "SELECT c.id_cliente, c.nombre, sum(fp.cantidad * p.valor) AS recaudacion, count(c.id_cliente) FROM factura_producto fp JOIN producto p ON (fp.id_producto = p.id_producto) JOIN factura f ON (fp.id_factura = f.id_factura) "
 					+ "JOIN cliente c ON (f.id_cliente = c.id_cliente) GROUP BY c.id_cliente, c.nombre ORDER BY recaudacion DESC";
 			ps = con.prepareStatement(select);
 			rs = ps.executeQuery();

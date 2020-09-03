@@ -8,7 +8,6 @@ public class Main {
 		
 		String uri = "jdbc:derby:MyDerbyDb; create = true";
 		DAOFactory factory = new DAOFactory();
-		factory.createData(uri);
 		factory.getBestProduct(uri);
 		factory.getBestCustomers(uri);
 	}
