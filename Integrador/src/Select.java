@@ -39,7 +39,7 @@ public class Select {
 				System.out.println(rs.getInt(1) + ", " + rs.getString(2) + ", " + rs.getInt(3));
 			}
 			con.close();
-		} catch (SQLException e) {	
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}

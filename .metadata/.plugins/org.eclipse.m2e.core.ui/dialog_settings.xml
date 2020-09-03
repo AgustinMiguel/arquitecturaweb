@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="JPAbasic"/>
 			<item value="Integrador"/>
 			<item value="JDBDocker"/>
 			<item value="JDBCbasic"/>
@@ -9,6 +10,7 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="JPAbasic"/>
 			<item value="Integrador"/>
 			<item value="JDBDocker"/>
 			<item value="JDBCbasic"/>
