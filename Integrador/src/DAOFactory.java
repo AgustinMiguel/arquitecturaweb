@@ -37,13 +37,28 @@ public class DAOFactory {
 		try {
 			Connection con = DriverManager.getConnection(uri);
 			createTables(con);
+			insertData(uri);
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	protected void insertData(String uri) {
+		try {
+			Class.forName(DRIVER).getDeclaredConstructor().newInstance();
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+				| NoSuchMethodException | SecurityException | ClassNotFoundException e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
+		try {
+			Connection con = DriverManager.getConnection(uri);
 			customers.addCustomerData(con);
 			bills.addBillData(con);
 			products.addProductData(con);
 			billsProducts.addBillProductData(con);
 			con.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 		}
 	}
 
@@ -54,24 +69,35 @@ public class DAOFactory {
 	protected void getBestCustomers(String uri) {
 		customers.getBestCustomers(uri, DRIVER);
 	}
-
-	private void createTables(Connection con) throws SQLException {
-		String table = "CREATE TABLE  cliente(" + "id_cliente INT," + "nombre VARCHAR(500)," + "email VARCHAR(150),"
+	private void createTables(Connection con) { 
+		String table = "CREATE TABLE cliente(" + "id_cliente INT," + "nombre VARCHAR(500)," + "email VARCHAR(150),"
 				+ "PRIMARY KEY(id_cliente))";
-		con.prepareStatement(table).execute();
-		con.commit();
+		try {
+			con.prepareStatement(table).execute();
+			con.commit();
+		} catch (SQLException e) {
+		}
 		table = "CREATE TABLE  factura(" + "id_factura INT," + " id_cliente INT NOT NULL,"
 				+ " PRIMARY KEY(id_factura), " + " FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente))";
-		con.prepareStatement(table).execute();
-		con.commit();
+		try {
+			con.prepareStatement(table).execute();
+			con.commit();
+		} catch (SQLException e) {
+		}
 		table = "CREATE TABLE producto(id_producto int NOT NULL," + " nombre varchar(45) NOT NULL,"
 				+ " valor double NOT NULL," + " PRIMARY KEY(id_producto))";
-		con.prepareStatement(table).execute();
-		con.commit();
+		try {
+			con.prepareStatement(table).execute();
+			con.commit();
+		} catch (SQLException e) {
+		}
 		table = "CREATE TABLE factura_producto(cantidad int NOT NULL," + " id_producto int NOT NULL,"
 				+ " id_factura int NOT NULL," + " FOREIGN KEY(id_producto) REFERENCES producto(id_producto),"
 				+ " FOREIGN KEY(id_factura) REFERENCES factura(id_factura))";
-		con.prepareStatement(table).execute();
-		con.commit();
+		try {
+			con.prepareStatement(table).execute();
+			con.commit();
+		} catch (SQLException e) {
+		}
 	}
 }
