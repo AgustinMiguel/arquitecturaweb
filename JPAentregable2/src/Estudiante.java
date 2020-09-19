@@ -4,8 +4,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-
+@NamedQuery(query = "Select e from Estudiante e where e.libreta = :libreta", name ="buscar estudiante con libreta x")
+@NamedQuery(query = "Select e from Estudiante e where e.genero = :genero", name ="buscar estudiante por genero")
 @Entity
 public class Estudiante {
 	@Id

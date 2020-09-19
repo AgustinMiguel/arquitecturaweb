@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="valor"/>
+		<item key="selection" value="&#x0D;&#x0A;import javax.persistence.Entity;&#x0D;&#x0A;import javax.persistence.ManyToOne;&#x0D;&#x0A;import javax.persistence.MapsId;&#x0D;&#x0A;&#x0D;&#x0A;@Entity&#x0D;&#x0A;public class EsudianteCarrera {&#x0D;&#x0A;&#x09;@EmbeddedId&#x0D;&#x0A;&#x09;private EstudianteCarreraID id = new EstudianteCarreraID();&#x0D;&#x0A;&#x09;@ManyToOne&#x0D;&#x0A;    @MapsId(&quot;estudianteId&quot;)&#x0D;&#x0A;    private Estudiante estudiante;&#x0D;&#x0A;&#x09; @ManyToOne&#x0D;&#x0A;&#x09; @MapsId&#x0D;&#x0A;}&#x0D;&#x0A;"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="import javax.persistence.EmbeddedId;"/>
+			<item value="&#x0D;&#x0A;import javax.persistence.Entity;&#x0D;&#x0A;import javax.persistence.ManyToOne;&#x0D;&#x0A;import javax.persistence.MapsId;&#x0D;&#x0A;&#x0D;&#x0A;@Entity&#x0D;&#x0A;public class EsudianteCarrera {&#x0D;&#x0A;&#x09;@EmbeddedId&#x0D;&#x0A;&#x09;private EstudianteCarreraID id = new EstudianteCarreraID();&#x0D;&#x0A;&#x09;@ManyToOne&#x0D;&#x0A;    @MapsId(&quot;estudianteId&quot;)&#x0D;&#x0A;    private Estudiante estudiante;&#x0D;&#x0A;&#x09; @ManyToOne&#x0D;&#x0A;&#x09; @MapsId&#x0D;&#x0A;}&#x0D;&#x0A;"/>
 			<item value="valor"/>
 			<item value="persona"/>
 		</list>
