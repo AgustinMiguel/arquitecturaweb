@@ -1,10 +1,14 @@
 import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class EstudianteCarreraID implements Serializable{
 	private static final long serialVersionUID = 1L;
+	@Column(name = "ID_Carrera")
 	private int carreraId;
+	@Column(name = "ID_Estudiante")
 	private int estudianteId;
 	public EstudianteCarreraID() {}
 	public EstudianteCarreraID(int carreraId, int estudianteId) {

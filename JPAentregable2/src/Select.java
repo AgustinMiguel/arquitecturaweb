@@ -8,9 +8,9 @@ public class Select {
 	public static void main(String[] args) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("Example");
 		EntityManager em = emf.createEntityManager();
-		List<Estudiante> estudiantes = getEstudiante('m',em);
-		for(Estudiante e: estudiantes) {
-			System.out.println(e);
+		List<EstudianteCarrera> carreras = getCarreras(em);
+		for(EstudianteCarrera c: carreras) {
+			System.out.println(c);
 		}
 		em.close();
 	}
@@ -38,5 +38,13 @@ public class Select {
 		@SuppressWarnings("unchecked")
 		List<Estudiante> estudiantes = query.getResultList();
 		return estudiantes;
+	}
+	
+	public static List<EstudianteCarrera> getCarreras(EntityManager em){ 
+		em.getTransaction().begin();
+		Query query = em.createNamedQuery("Buscar carreras con alumnos");
+		@SuppressWarnings("unchecked")
+		List<EstudianteCarrera> carreras = query.getResultList();
+		return carreras;
 	}
 }

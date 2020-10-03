@@ -34,6 +34,7 @@
 		<item key="updateTextualMatches" value="false"/>
 		<item key="updateQualifiedNames" value="false"/>
 		<item key="patterns" value="*"/>
+		<item key="renameSubpackages" value="false"/>
 	</section>
 	<section name="SourceActionDialog.constructors">
 		<item key="VisibilityModifier" value="1"/>
@@ -148,20 +149,20 @@
 		<item key="antpath" value="D:\Tudai\Arquitecturas web\parcial\javadoc.xml"/>
 		<item key="destdir" value="C:\Users\Usuario\Desktop"/>
 		<section name="projects">
-			<section name="parcial">
-				<item key="href" value=""/>
-				<item key="destdir" value="C:\Users\Usuario\Desktop"/>
-				<item key="antpath" value="D:\Tudai\Arquitecturas web\parcial\javadoc.xml"/>
-			</section>
 			<section name="JPAbasic">
 				<item key="href" value=""/>
 				<item key="destdir" value="D:\Tudai\Arquitecturas web\JPAbasic\doc"/>
 				<item key="antpath" value="D:\Tudai\Arquitecturas web\JPAbasic\javadoc.xml"/>
 			</section>
-			<section name="JPAentregable">
+			<section name="JPAentregable2">
 				<item key="href" value=""/>
-				<item key="destdir" value="D:\Tudai\Arquitecturas web\JPAentregable\doc"/>
-				<item key="antpath" value="D:\Tudai\Arquitecturas web\JPAentregable\javadoc.xml"/>
+				<item key="destdir" value="D:\Tudai\Arquitecturas web\JPAentregable2\doc"/>
+				<item key="antpath" value="D:\Tudai\Arquitecturas web\JPAentregable2\javadoc.xml"/>
+			</section>
+			<section name="Servers">
+				<item key="href" value=""/>
+				<item key="destdir" value="D:\Tudai\Arquitecturas web\Servers\doc"/>
+				<item key="antpath" value="D:\Tudai\Arquitecturas web\Servers\javadoc.xml"/>
 			</section>
 			<section name="JDBDocker">
 				<item key="href" value=""/>
@@ -173,6 +174,11 @@
 				<item key="destdir" value="D:\Tudai\Arquitecturas web\JDBCbasic\doc"/>
 				<item key="antpath" value="D:\Tudai\Arquitecturas web\JDBCbasic\javadoc.xml"/>
 			</section>
+			<section name="Servlets">
+				<item key="href" value=""/>
+				<item key="destdir" value="D:\Tudai\Arquitecturas web\Servlets\doc"/>
+				<item key="antpath" value="D:\Tudai\Arquitecturas web\Servlets\javadoc.xml"/>
+			</section>
 			<section name="Integrador">
 				<item key="href" value=""/>
 				<item key="destdir" value="D:\Tudai\Arquitecturas web\Integrador\doc"/>
@@ -183,6 +189,11 @@
 				<item key="destdir" value="D:\Tudai\Arquitecturas web\JPAP2E1\doc"/>
 				<item key="antpath" value="D:\Tudai\Arquitecturas web\JPAP2E1\javadoc.xml"/>
 			</section>
+			<section name="Rest.Jersey2b">
+				<item key="href" value=""/>
+				<item key="destdir" value="D:\Tudai\Arquitecturas web\Rest.Jersey2b\doc"/>
+				<item key="antpath" value="D:\Tudai\Arquitecturas web\Rest.Jersey2b\javadoc.xml"/>
+			</section>
 		</section>
 	</section>
 	<section name="DialogBounds_GenerateHashCodeEqualsDialog">
@@ -191,5 +202,8 @@
 		<item key="DIALOG_WIDTH" value="514"/>
 		<item key="DIALOG_HEIGHT" value="592"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="NewPackageWizardPage">
+		<item key="create_package_info_java" value="false"/>
 	</section>
 </section>

@@ -2,6 +2,10 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="Entregable3.1"/>
+			<item value="Entregable3"/>
+			<item value="Rest.Jersey2b"/>
+			<item value="Rest.Jersey"/>
 			<item value="JPAentregable2"/>
 			<item value="JPAentregable"/>
 			<item value="JPAP2E1"/>
@@ -13,6 +17,10 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="Entregable3.1"/>
+			<item value="Entregable3"/>
+			<item value="Rest.Jersey2b"/>
+			<item value="Rest.Jersey"/>
 			<item value="JPAentregable2"/>
 			<item value="JPAentregable"/>
 			<item value="JPAP2E1"/>

@@ -14,7 +14,6 @@ public class Insert {
 		Carrera c1 = new Carrera("Tudai");
 		EstudianteCarreraID ecID1 = new EstudianteCarreraID(1, 1);
 		EstudianteCarrera ec1 = new EstudianteCarrera(ecID1 ,e1, c1);
-
 		em.persist(e1);
 		em.persist(c1);
 		em.persist(ec1);
