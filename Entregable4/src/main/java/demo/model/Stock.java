@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 public class Stock {
 	@Id
-    //private int id;
+    private int id;
     @OneToOne
     private Producto producto;
     @Column

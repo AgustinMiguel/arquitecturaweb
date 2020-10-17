@@ -1,6 +1,8 @@
 package demo.model;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,13 +19,12 @@ public class Cliente {
 	@Column
 	private String nombre;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="id" )
-	private ArrayList<Compra> compras;
+	private List<Compra> compras;
 	
 	public Cliente(int id, String nombre) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.compras = new ArrayList<Compra>();
 	} 
 	
 	public Cliente() {} 

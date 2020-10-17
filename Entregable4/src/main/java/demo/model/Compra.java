@@ -2,6 +2,7 @@ package demo.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,14 +20,13 @@ public class Compra{
 	@Column
 	private Date fechaDeCompra;
 	@OneToMany
-	private ArrayList<Producto> productos;
+	private List<Producto> productos;
 	
 	public Compra() {}
 	
 	public Compra(int id,Date fechaDeCompra) {
 		super();
 		this.id = id;
-		this.productos = new ArrayList<Producto>();
 		this.fechaDeCompra = fechaDeCompra;
 	}
 	

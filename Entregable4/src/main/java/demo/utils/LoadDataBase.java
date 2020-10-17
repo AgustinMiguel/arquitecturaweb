@@ -20,7 +20,8 @@ import demo.repository.ProductoRepository;
 @Configuration
 @Slf4j
 class LoadDatabase {
-    CommandLineRunner initDatabase(@Qualifier("productoRepository") ProductoRepository repository) {
+	 @Bean
+    CommandLineRunner addProductos(@Qualifier("productoRepository") ProductoRepository repository) {
         return args -> {
             log.info("Preloading " + repository.save(new Producto((int) 1, "Cepita",(double) 75)));
             log.info("Preloading " + repository.save(new Producto((int) 2, "Fideos", (double) 76)));
@@ -30,4 +31,10 @@ class LoadDatabase {
             log.info("Preloading " + repository.save(new Producto((int) 6, "Caramelo", (double) 2)));
         };
     }
+	    CommandLineRunner addCompras(@Qualifier("compraRepository") CompraRepository repository) {
+	        return args -> {
+	            log.info("Preloading " + repository.save(new Compra((int) 1,(Date) 17-10-2020)));
+	        };
+	    }
+	 
 }
