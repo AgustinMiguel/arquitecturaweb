@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Producto {
+public class Producto{
 	@Id
 	private int id;
 	@Column
