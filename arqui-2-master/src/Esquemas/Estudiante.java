@@ -25,7 +25,7 @@ public class Estudiante {
 	@Column 
 	private int numero_libreta;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "carrera")
-	private List <Estudiante_Carrera> carreras;
+	private List <EstudianteCarrera> carreras;
 	
 	
 	public Estudiante(){
@@ -80,7 +80,7 @@ public class Estudiante {
 		return numero_libreta;
 	}
 
-	public List<Estudiante_Carrera> getCarreras() {
+	public List<EstudianteCarrera> getCarreras() {
 		return carreras;
 	}
 	

@@ -10,8 +10,8 @@ import javax.persistence.Persistence;
 
 import Esquemas.Carrera;
 import Esquemas.Estudiante;
-import Esquemas.Estudiante_Carrera;
-import Esquemas.Estudiante_CarreraPK;
+import Esquemas.EstudianteCarrera;
+import Esquemas.EstudianteCarreraPK;
 import dao.DaoCarrera;
 import dao.DaoEstudiante;
 import dao.DaoEstudianteCarrera;

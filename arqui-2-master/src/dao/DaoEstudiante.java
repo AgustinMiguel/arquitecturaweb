@@ -61,7 +61,7 @@ public class DaoEstudiante {
 	//g) recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia
 	public List<Estudiante> estudianteSegunCarreraCiudad(int idCarrera, String ciudad,EntityManager em){
 		try {
-		Query query =  em.createQuery("SELECT ec.estudiante from Estudiante_Carrera ec join ec.estudiante e  join ec.carrera c where e.ciudad_residencia = :ciudad_residencia and c.id = :id ");
+		Query query =  em.createQuery("SELECT ec.estudiante from EstudianteCarrera ec join ec.estudiante e  join ec.carrera c where e.ciudad_residencia = :ciudad_residencia and c.id = :id ");
 		query.setParameter("ciudad_residencia", ciudad);
 		query.setParameter("id", idCarrera);
 		@SuppressWarnings("unchecked")

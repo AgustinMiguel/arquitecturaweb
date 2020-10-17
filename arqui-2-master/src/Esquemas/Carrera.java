@@ -15,7 +15,7 @@ public class Carrera {
 	@Column
 	private String nombre;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "estudiante")
-	private List <Estudiante_Carrera> estudiantes;
+	private List <EstudianteCarrera> estudiantes;
 	
 	public Carrera(){
 		
@@ -27,7 +27,7 @@ public class Carrera {
 	}
 	
 	
-	public void addEstudiante(Estudiante_Carrera estudiante) {
+	public void addEstudiante(EstudianteCarrera estudiante) {
 		estudiantes.add(estudiante);
 	}
 
@@ -42,7 +42,7 @@ public class Carrera {
 	}
 
 
-	public List<Estudiante_Carrera> getEstudiantes() {
+	public List<EstudianteCarrera> getEstudiantes() {
 		return estudiantes;
 	}
 	@Override

@@ -9,7 +9,7 @@ import javax.persistence.Query;
 
 import Esquemas.Carrera;
 import Esquemas.Estudiante;
-import Esquemas.Estudiante_Carrera;
+import Esquemas.EstudianteCarrera;
 import dao.DaoCarrera;
 import dao.DaoEstudiante;
 import dao.DaoEstudianteCarrera;
@@ -24,11 +24,11 @@ public class Select {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		imprimirEstudiantes(daoEstudiante.recuperarEstudiantes(em));
-		imprimirEstudiante(daoEstudiante.estudianteSegunLibreUniversitaria(444,em));
-		imprimirEstudiantes(daoEstudiante.estudianteSegunGenero("caldo",em));
-		imprimirCarreras(daoCarrera.carrerasSegunInscriptos(em));
-		imprimirEstudiantes(daoEstudiante.estudianteSegunCarreraCiudad(3, "otro",em));
-		imprimirReporteCarreras(daoEstudianteCarrera.reporteCarreras(em));
+		//imprimirEstudiante(daoEstudiante.estudianteSegunLibreUniversitaria(444,em));
+		//imprimirEstudiantes(daoEstudiante.estudianteSegunGenero("caldo",em));
+		//imprimirCarreras(daoCarrera.carrerasSegunInscriptos(em));
+		//imprimirEstudiantes(daoEstudiante.estudianteSegunCarreraCiudad(3, "otro",em));
+		//imprimirReporteCarreras(daoEstudianteCarrera.reporteCarreras(em));
 		em.close();
 
 	}
@@ -67,7 +67,7 @@ public class Select {
 			}
 		}
 		
-		public static void imprimirReporteCarreras(List<Estudiante_Carrera>  reporte) {
+		public static void imprimirReporteCarreras(List<EstudianteCarrera>  reporte) {
 			if(reporte.size() > 0) {
 			for(int i = 0; i<reporte.size(); i++) {
 				if(i>0) {
