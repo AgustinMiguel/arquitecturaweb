@@ -3,11 +3,15 @@ package demo.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -15,18 +19,24 @@ import lombok.Data;
 @Data
 public class Cliente {
 	@Id
-	private int id;
+	private Long id;
 	@Column
 	private String nombre;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="id" )
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "idCompra", referencedColumnName = "id")
 	private List<Compra> compras;
 	
-	public Cliente(int id, String nombre) {
+    public Cliente() {} 
+    
+	public Cliente(Long id, String nombre) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
+		this.compras = new ArrayList<Compra>();
 	} 
 	
-	public Cliente() {} 
+	public void add(Compra c) {
+		compras.add(c);
+	}
 	
 }

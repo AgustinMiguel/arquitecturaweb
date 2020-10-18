@@ -11,30 +11,62 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import demo.model.Cliente;
 import demo.model.Compra;
 import demo.model.Producto;
+import demo.model.Stock;
 import demo.repository.ClienteRepository;
 import demo.repository.CompraRepository;
 import demo.repository.ProductoRepository;
+import demo.repository.StockRepository;
 
 @Configuration
 @Slf4j
 class LoadDatabase {
-	 @Bean
-    CommandLineRunner addProductos(@Qualifier("productoRepository") ProductoRepository repository) {
-        return args -> {
-            log.info("Preloading " + repository.save(new Producto((int) 1, "Cepita",(double) 75)));
-            log.info("Preloading " + repository.save(new Producto((int) 2, "Fideos", (double) 76)));
-            log.info("Preloading " + repository.save(new Producto((int) 3, "Arroz", (double) 15)));
-            log.info("Preloading " + repository.save(new Producto((int) 4, "Cocacola", (double) 90)));
-            log.info("Preloading " + repository.save(new Producto((int) 5, "Porongol", (double) 55)));
-            log.info("Preloading " + repository.save(new Producto((int) 6, "Caramelo", (double) 2)));
+//	  private ClienteRepository clienteRepository;
+//	  private CompraRepository compraRepository;
+//	  private StockRepository stockRepository;
+
+	 	  
+	@Bean
+    CommandLineRunner initDatabaseProducto(
+    		@Qualifier("productoRepository") ProductoRepository repositoryProducto,
+    		@Qualifier("compraRepository") CompraRepository repositoryCompra,
+    		@Qualifier("stockRepository") StockRepository repositoryStock,
+    		@Qualifier("clienteRepository") ClienteRepository repositoryCliente) {
+	    	
+
+	    	//c1.add(new Producto((Long) 1, "Cepita",(double) 75));	
+		 return args -> {
+		    	Producto p1 = new Producto(Long.valueOf("1"), "Cepita",(double) 75);
+		    	Producto p2 = new Producto(Long.valueOf("2"), "Arroz",(double) 15);
+		    	Compra c1 = new Compra(Long.valueOf("1"), new Date(17-10-2020));
+		    	Compra c2 = new Compra(Long.valueOf("2"), new Date(11-11-2019));
+		    	c1.add(p1);
+		    	c2.add(p2);
+		    	Stock s1 = new Stock(Long.valueOf("1"), p1, 15);
+		    	Stock s2 = new Stock(Long.valueOf("2"), p2, 10);
+		    	Cliente cl1 = new Cliente(Long.valueOf("1"), "juan porongol");
+		    	Cliente cl2 = new Cliente(Long.valueOf("2"), "julian porongol2");
+		    	cl1.add(c1);
+		    	cl2.add(c2);
+            log.info("Preloading " + repositoryProducto.save(p1));
+            log.info("Preloading " + repositoryProducto.save(p2));
+//            log.info("Preloading " + repositoryProducto.save(new Producto((Long) 3, "Arroz", (double) 15)));
+//            log.info("Preloading " + repositoryProducto.save(new Producto((Long) 4, "Cocacola", (double) 90)));
+//            log.info("Preloading " + repositoryProducto.save(new Producto((Long) 5, "Porongol", (double) 55)));
+//            log.info("Preloading " + repositoryProducto.save(new Producto((Long) 6, "Caramelo", (double) 2)));
+            log.info("Preloading " + repositoryCompra.save(c1));
+            log.info("Preloading " + repositoryCompra.save(c2));
+            log.info("Preloading " + repositoryStock.save(s1));
+            log.info("Preloading " + repositoryStock.save(s2));
+            log.info("Preloading " + repositoryCliente.save(cl1));
+            log.info("Preloading " + repositoryCliente.save(cl2));
+            
         };
     }
-	    CommandLineRunner addCompras(@Qualifier("compraRepository") CompraRepository repository) {
-	        return args -> {
-	            log.info("Preloading " + repository.save(new Compra((int) 1,(Date) 17-10-2020)));
-	        };
-	    }
+    
+		 
 	 
+
 }
