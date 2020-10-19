@@ -27,7 +27,8 @@ public class Compra{
 	private Long id;
 	@Column
 	private Date fechaDeCompra;
-    @OneToMany(fetch = FetchType.EAGER)
+	@JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "idProducto", referencedColumnName = "id")
 	private List<Producto> productos;
 	
