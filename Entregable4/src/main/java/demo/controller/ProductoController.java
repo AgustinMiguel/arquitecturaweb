@@ -1,5 +1,6 @@
 package demo.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -38,7 +39,27 @@ public class ProductoController {
 	public Optional<Producto> getProducto(@PathVariable Long id) {
 		return repository.findById(id);
 	}
-
+	
+	@GetMapping("/masVendido")
+	public Producto getProductoMasVendido() {
+		int total = 0;
+		int maxTotal = 0;
+		Producto productoMasVendido = new Producto();
+		List<Producto> productos = repository.productos();
+		for(Producto p: productos) {
+			for(Producto p1: productos) {
+				if(p.equals(p1)) {
+					total++;
+				}
+			}
+			if(total > maxTotal) {
+				maxTotal = total;
+				productoMasVendido = p;
+			}
+			total =0;
+		}
+		return productoMasVendido;
+	}
 	
 	 @PostMapping("/add") public Producto newProducto(@RequestBody Producto p) {
 	 return repository.save(p);
@@ -61,6 +82,7 @@ public class ProductoController {
 	 void deleteProducto(@PathVariable Long id) {
 	        repository.borrarStockProducto(id);
 	    }
+	
 	 
 	 
 }

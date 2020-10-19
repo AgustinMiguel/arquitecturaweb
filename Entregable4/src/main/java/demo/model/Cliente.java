@@ -22,7 +22,8 @@ public class Cliente {
 	private Long id;
 	@Column
 	private String nombre;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "idCompra", referencedColumnName = "id")
 	private List<Compra> compras;
 	
